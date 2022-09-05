@@ -1,0 +1,17 @@
+body {
+  color: #70757a;
+}
+.container {
+  max-width: 625px;
+  margin: 30px auto;
+}
+ul {
+  list-style: none;
+}
+li {
+  font-size: 12px;
+  line-height: 16px;
+}
+h1 {
+  text-align: right;
+}
