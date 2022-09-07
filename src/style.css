@@ -51,7 +51,8 @@ h1 {
   line-height: 26px;
   margin: 0;
 }
-.city-info li {
+.city-info li,
+.city-info span {
   color: #70757a;
   font-size: 16px;
   line-height: 20px;
