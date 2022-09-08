@@ -17,13 +17,30 @@
   <body>
     <div class="container">
       <div class="weather-wrap border-bottom">
+        <form id="search-form">
+          <div class="row mb-3">
+            <div class="col-10">
+              <input
+                type="search"
+                placeholder="Type a city .."
+                class="form-control"
+                id="city-input"
+                autocomplete="off"
+              />
+            </div>
+            <div class="col-2">
+              <input
+                type="submit"
+                value="Search"
+                class="btn btn-primary w100"
+              />
+            </div>
+          </div>
+        </form>
         <div class="weather-info">
           <div class="row">
             <div class="col-6 d-flex">
-              <img
-                src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-                alt="partly_cloudy"
-              />
+              <img src="" alt="partly_cloudy" id="icon" />
               <strong id="temperature"></strong>
               <span class="unit-c"> °C |</span>
               <span class="unit-f"> °F</span>
