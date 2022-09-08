@@ -32,10 +32,11 @@ function showTemperature(responce) {
   let timeElement = document.querySelector("#time");
   let iconElement = document.querySelector("#icon");
 
-  temperatureElement.innerHTML = Math.round(responce.data.main.temp);
-  humidityElement.innerHTML = `Humidity: ${responce.data.main.humidity}`;
+  celciumTemperature = Math.round(responce.data.main.temp);
+  temperatureElement.innerHTML = celciumTemperature;
+  humidityElement.innerHTML = `Humidity: ${responce.data.main.humidity}%`;
   conditionsElemet.innerHTML = responce.data.weather[0].main;
-  windElement.innerHTML = `Wind: ${responce.data.wind.speed}`;
+  windElement.innerHTML = `Wind: ${responce.data.wind.speed} km/h`;
   cityElement.innerHTML = `${responce.data.name}, ${responce.data.sys.country}`;
   timeElement.innerHTML = formateDate(responce.data.dt * 1000);
   iconElement.setAttribute(
@@ -60,5 +61,31 @@ function searchHandale(event) {
   search(cityInputElement.value);
 }
 
+function displayInF(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  let fahrenheitTemperature = (celciumTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+  fahrenheitElement.classList.add("active-unit");
+  celciumElement.classList.remove("active-unit");
+}
+
+function displayInC(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = celciumTemperature;
+  fahrenheitElement.classList.remove("active-unit");
+  celciumElement.classList.remove("active-unit");
+}
+let celciumTemperature = null;
+
 let submitElement = document.querySelector("#search-form");
 submitElement.addEventListener("submit", searchHandale);
+
+let fahrenheitElement = document.querySelector("#fahrenheit");
+fahrenheitElement.addEventListener("click", displayInF);
+
+let celciumElement = document.querySelector("#celcium");
+celciumElement.addEventListener("click", displayInC);
+
+search("Lisbon");

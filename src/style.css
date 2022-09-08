@@ -1,6 +1,16 @@
 body {
   color: #70757a;
 }
+a {
+  text-decoration: none;
+  color: #70757a;
+}
+.a:hover,
+a:focus,
+a:target {
+  cursor: default;
+  color: #202124;
+}
 .container {
   max-width: 652px;
   margin: 30px auto;
@@ -35,14 +45,24 @@ ul {
   padding-left: 10px;
 }
 
-.weather-info span {
-  color: #202124;
+.units {
+  color: #70757a;
   display: inline-block;
   font-size: 16px;
   line-height: 24px;
   margin-top: 6px;
   padding-left: 6px;
   vertical-align: top;
+  text-decoration: none;
+}
+.units:hover {
+  cursor: pointer;
+  color: #70757a;
+}
+
+.active-unit {
+  color: #202124;
+  text-decoration: none;
 }
 
 h1 {
@@ -57,4 +77,8 @@ h1 {
   font-size: 16px;
   line-height: 20px;
   margin: 0;
+}
+small a {
+  text-decoration: underline;
+  color: #0d6efd;
 }

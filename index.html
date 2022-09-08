@@ -40,14 +40,16 @@
         <div class="weather-info">
           <div class="row">
             <div class="col-6 d-flex">
-              <img src="" alt="partly_cloudy" id="icon" />
+              <img alt="partly_cloudy" id="icon" />
               <strong id="temperature"></strong>
-              <span class="unit-c"> °C |</span>
-              <span class="unit-f"> °F</span>
+              <span class="units">
+                <a class="active-unit" id="celcium">°C</a> <span>|</span>
+                <a id="fahrenheit"> °F</a>
+              </span>
 
               <ul class="weather-points">
                 <li id="humidity"></li>
-                <li id="wind">Wind: 21 km/h</li>
+                <li id="wind"></li>
               </ul>
             </div>
             <div class="col-6 text-end city-info">
