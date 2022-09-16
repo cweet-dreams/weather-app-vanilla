@@ -77,6 +77,34 @@ function displayInC(event) {
   fahrenheitElement.classList.remove("active-unit");
   celciumElement.classList.remove("active-unit");
 }
+
+function displayForecast() {
+  let foresatElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+
+  forecastHTML =
+    forecastHTML +
+    `
+  <div class="col-2">
+              <div class="weather-forecast-date">Fi</div>
+              <img
+                src="http://openweathermap.org/img/wn/50d@2x.png"
+                alt=""
+                width="42"
+              />
+              <div class="weather-forecast-temperatures">
+                <span class="weather-forecast-temperature-max"> 18° </span>
+                <span class="weather-forecast-temperature-min"> 12° </span>
+              </div>
+            </div>
+ `;
+
+  forecastHTML = forecastHTML + `</div>`;
+
+  foresatElement.innerHTML = forecastHTML;
+}
+
 let celciumTemperature = null;
 
 let submitElement = document.querySelector("#search-form");
@@ -89,3 +117,4 @@ let celciumElement = document.querySelector("#celcium");
 celciumElement.addEventListener("click", displayInC);
 
 search("Lisbon");
+displayForecast();
