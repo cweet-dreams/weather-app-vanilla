@@ -22,8 +22,45 @@ function formateDate(timestamp) {
 
   return `${day} ${hours}:${minutes}`;
 }
+function displayForecast() {
+  let foresatElement = document.querySelector("#forecast");
+  let days = ["Sun", "Mon", "Tue"];
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+    <div class="col-2">
+                <div class="weather-forecast-date">${day}</div>
+                <img
+                  src="http://openweathermap.org/img/wn/50d@2x.png"
+                  alt=""
+                  width="42"
+                />
+                <div class="weather-forecast-temperatures">
+                  <span class="weather-forecast-temperature-max"> 18° </span>
+                  <span class="weather-forecast-temperature-min"> 12° </span>
+                </div>
+              </div>
+   `;
+  });
 
-function showTemperature(responce) {
+  forecastHTML = forecastHTML + `</div>`;
+
+  foresatElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  let keyApi = "97f8e93f00107773f88eafd933ce86b7";
+
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=current,minutely,daily,alerts,hourly&appid=${keyApi}`;
+
+  console.log(apiUrl);
+
+  axios.get(apiUrl).then(displayForecast());
+}
+
+https: function showTemperature(responce) {
   let temperatureElement = document.querySelector("#temperature");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
@@ -47,9 +84,12 @@ function showTemperature(responce) {
     "alt",
     `http://openweathermap.org/img/wn/${responce.data.weather[0].main}@2x.png`
   );
+
+  getForecast(responce.data.coord);
 }
+
 function search(cityName) {
-  let keyApi = "00ceb4c1a676b6d772176beae74069d4";
+  let keyApi = "97f8e93f00107773f88eafd933ce86b7";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${keyApi}&units=metric`;
 
   axios.get(apiUrl).then(showTemperature);
@@ -78,33 +118,6 @@ function displayInC(event) {
   celciumElement.classList.remove("active-unit");
 }
 
-function displayForecast() {
-  let foresatElement = document.querySelector("#forecast");
-
-  let forecastHTML = `<div class="row">`;
-
-  forecastHTML =
-    forecastHTML +
-    `
-  <div class="col-2">
-              <div class="weather-forecast-date">Fi</div>
-              <img
-                src="http://openweathermap.org/img/wn/50d@2x.png"
-                alt=""
-                width="42"
-              />
-              <div class="weather-forecast-temperatures">
-                <span class="weather-forecast-temperature-max"> 18° </span>
-                <span class="weather-forecast-temperature-min"> 12° </span>
-              </div>
-            </div>
- `;
-
-  forecastHTML = forecastHTML + `</div>`;
-
-  foresatElement.innerHTML = forecastHTML;
-}
-
 let celciumTemperature = null;
 
 let submitElement = document.querySelector("#search-form");
@@ -117,4 +130,3 @@ let celciumElement = document.querySelector("#celcium");
 celciumElement.addEventListener("click", displayInC);
 
 search("Lisbon");
-displayForecast();
