@@ -87,7 +87,7 @@ small a {
   text-align: center;
 }
 .weather-forecast {
-  margin-top: 20px;
+  margin: 20px 0;
   text-align: center;
   color: #000;
 }
