@@ -78,7 +78,7 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
 }
 
-https: function showTemperature(responce) {
+function showTemperature(responce) {
   let temperatureElement = document.querySelector("#temperature");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
@@ -91,7 +91,7 @@ https: function showTemperature(responce) {
   temperatureElement.innerHTML = celciumTemperature;
   humidityElement.innerHTML = `Humidity: ${responce.data.main.humidity}%`;
   conditionsElemet.innerHTML = responce.data.weather[0].main;
-  windElement.innerHTML = `Wind: ${responce.data.wind.speed} km/h`;
+  windElement.innerHTML = `Wind: ${Math.round(responce.data.wind.speed)} km/h`;
   cityElement.innerHTML = `${responce.data.name}, ${responce.data.sys.country}`;
   timeElement.innerHTML = formateDate(responce.data.dt * 1000);
   iconElement.setAttribute(
@@ -118,8 +118,6 @@ function searchHandale(event) {
   let cityInputElement = document.querySelector("#city-input");
   search(cityInputElement.value);
 }
-
-
 
 let celciumTemperature = null;
 
