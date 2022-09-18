@@ -119,32 +119,11 @@ function searchHandale(event) {
   search(cityInputElement.value);
 }
 
-function displayInF(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  let fahrenheitTemperature = (celciumTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-  fahrenheitElement.classList.add("active-unit");
-  celciumElement.classList.remove("active-unit");
-}
 
-function displayInC(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = celciumTemperature;
-  fahrenheitElement.classList.remove("active-unit");
-  celciumElement.classList.remove("active-unit");
-}
 
 let celciumTemperature = null;
 
 let submitElement = document.querySelector("#search-form");
 submitElement.addEventListener("submit", searchHandale);
-
-let fahrenheitElement = document.querySelector("#fahrenheit");
-fahrenheitElement.addEventListener("click", displayInF);
-
-let celciumElement = document.querySelector("#celcium");
-celciumElement.addEventListener("click", displayInC);
 
 search("Lisbon");
